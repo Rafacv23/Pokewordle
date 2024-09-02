@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { Code2, GithubIcon } from "lucide-react";
+import { Button } from "@/components/ui/button"
+import { Code2, GithubIcon } from "lucide-react"
 
 export default function HeroSection() {
   return (
@@ -8,9 +8,14 @@ export default function HeroSection() {
         <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px] items-center">
           <div className="flex flex-col justify-center space-y-8">
             <div className="space-y-4">
+              <img
+                src="/src/assets/logo.png"
+                width={120}
+                height={120}
+                alt="Pokewordle logo"
+              />
               <h1 className="text-3xl font-bold tracking-tight text-balance sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-foreground to-muted-foreground/70">
-                The best ViteJs <br />
-                Starter Template
+                PokeWordle
               </h1>
               <p className="text-muted-foreground  mx-auto">
                 Comes with Lucide, ShadCN UI, theme toggle too! Accelerate your
@@ -41,5 +46,5 @@ export default function HeroSection() {
         </div>
       </div>
     </section>
-  );
+  )
 }
