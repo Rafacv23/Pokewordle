@@ -1,19 +1,41 @@
 {
   "name": "pokewordle",
-  "type": "module",
   "version": "0.0.1",
+  "description": "Wordle but with Pokemons!",
+  "author": {
+    "name": "Rafacv23"
+  },
+  "license": "MIT",
   "scripts": {
+    "build": "astro build",
     "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
+    "format": "prettier -w . --cache",
     "preview": "astro preview",
-    "astro": "astro"
+    "start": "astro dev"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.3",
-    "@astrojs/preact": "^3.5.2",
+    "@astrojs/react": "^3.6.2",
+    "@astrojs/tailwind": "^5.1.0",
+    "@radix-ui/react-slot": "^1.1.0",
     "astro": "^4.15.1",
-    "preact": "^10.23.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.438.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sharp": "^0.33.5",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss": "^3.4.10",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20.16.3",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.6.6",
     "typescript": "^5.5.4"
-  }
+  },
+  "packageManager": "pnpm@9.9.0"
 }

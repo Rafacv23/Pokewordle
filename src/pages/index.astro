@@ -1,89 +1,42 @@
 ---
-import Layout from "@layouts/Layout.astro";
-
-
-
-const url = `https://pokeapi.co/api/v2/pokemon/psyduck`
-
-const response = await fetch(url)
-const data = await response.json()
-
-console.log(data);
-
-// Elementos que tendrá el usuario para adiviniar el pokemon
-// 1. nombre
-// 2. genereacion
-// 3. tipos
-// 4. peso, decirle si el pokemon pesa mas o menos que el correcto 
-// 5. altura, decirle si el pokemon es mas alto o menos que el correcto
-// 6. coger alguna habilidad random
-// 7. numero pokedex global, decirle si esta por encima o por debajo
-// 8. decirle si el pokemon tiene evoluciones
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import { buttonVariants } from '@/components/ui/button'
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Pokewordle</span></h1>
-		<small>You have 6 attempts to guest the Pokemon!</small>
-		<button>Play</button>
-	</main>
-</Layout>
-
-<style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-	}
-	.astro-a {
-		position: absolute;
-		top: -32px;
-		left: 50%;
-		transform: translatex(-50%);
-		width: 220px;
-		height: auto;
-		z-index: -1;
-	}
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		margin-bottom: 2rem;
-		border: 1px solid rgba(var(--accent-light), 25%);
-		background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
-		padding: 1.5rem;
-		border-radius: 8px;
-	}
-	.instructions code {
-		font-size: 0.8em;
-		font-weight: bold;
-		background: rgba(var(--accent-light), 12%);
-		color: rgb(var(--accent-light));
-		border-radius: 4px;
-		padding: 0.3em 0.4em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent-light));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 2rem;
-		padding: 0;
-	}
-</style>
+<BaseLayout
+  title="Astro Shadcn UI Template"
+  description="This template helps you build apps with Astro, Tailwind CSS, and Shadcn UI."
+>
+  <section class="container grid items-center gap-6 pb-8 pt-6 md:py-10">
+    <div class="flex max-w-[980px] flex-col items-start gap-2">
+      <h1
+        class="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl"
+      >
+        Astro Shadcn UI Template <br class="hidden sm:inline" />
+        built with Radix UI and Tailwind CSS.
+      </h1>
+      <p class="max-w-[700px] text-lg text-muted-foreground">
+        Accessible and customizable components that you can copy and paste into
+        your apps. Free. Open Source.
+      </p>
+    </div>
+    <div class="flex gap-4">
+      <a
+        href="https://ui.shadcn.com"
+        target="_blank"
+        rel="noreferrer"
+        class={buttonVariants()}
+      >
+        Documentation
+      </a>
+      <a
+        href="https://github.com/AREA44/astro-shadcn-ui-template"
+        target="_blank"
+        rel="noreferrer"
+        class={buttonVariants({ variant: 'outline' })}
+      >
+        GitHub
+      </a>
+    </div>
+  </section>
+</BaseLayout>
