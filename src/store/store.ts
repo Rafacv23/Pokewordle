@@ -15,7 +15,7 @@ export interface State {
 
 export const usePokemonStore = create<State>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       pokemons: [],
       selectedPokemon: null,
       getAllPokemons: async () => {
@@ -24,8 +24,23 @@ export const usePokemonStore = create<State>()(
         )
         const data = await response.json()
 
+        if (!response.ok) {
+          throw new Error("Failed to fetch data")
+        }
+
         console.log("Pokemons received")
+
+        // Actualiza el estado con los datos obtenidos
         set({ pokemons: data.results })
+
+        // Obtén la lista de pokemons actualizada
+        const pokemons = get().pokemons
+
+        // Selecciona un Pokémon aleatorio
+        const selectedPokemon =
+          pokemons[Math.floor(Math.random() * pokemons.length)]
+        // Actualiza el estado con el Pokémon seleccionado
+        set({ selectedPokemon })
       },
       reset: () => {
         set({ pokemons: [], selectedPokemon: null })
