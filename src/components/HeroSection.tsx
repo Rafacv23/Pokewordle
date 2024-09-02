@@ -1,4 +1,4 @@
-import Start from "./Start"
+import Start from "@/components/Start"
 
 export default function HeroSection() {
   return (
