@@ -1,19 +1,25 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import { buttonVariants } from '@/components/ui/button'
+import { Image } from 'astro:assets'
 ---
 
 <BaseLayout
-  title="Astro Shadcn UI Template"
+  title="PokeWordle"
   description="This template helps you build apps with Astro, Tailwind CSS, and Shadcn UI."
 >
   <section class="container grid items-center gap-6 pb-8 pt-6 md:py-10">
     <div class="flex max-w-[980px] flex-col items-start gap-2">
+      <Image
+        src={'/logo.png'}
+        alt={'Pokewordle logo'}
+        width={120}
+        height={120}
+      />
       <h1
         class="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl"
       >
-        Astro Shadcn UI Template <br class="hidden sm:inline" />
-        built with Radix UI and Tailwind CSS.
+        PokeWordle
       </h1>
       <p class="max-w-[700px] text-lg text-muted-foreground">
         Accessible and customizable components that you can copy and paste into
