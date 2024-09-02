@@ -1,8 +1,15 @@
 import { Button } from "@/components/ui/button"
 import { Code2, GithubIcon } from "lucide-react"
 import { githubUrl } from "@/site/config"
+import { usePokemonStore } from "@/store/store"
 
 export default function HeroSection() {
+  const getAllPokemons = usePokemonStore((state) => state.getAllPokemons)
+
+  const handleClick = () => {
+    getAllPokemons()
+  }
+
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
       <div className="w-full px-2 mx-auto max-w-screen-xl md:px-6">
@@ -24,7 +31,7 @@ export default function HeroSection() {
               </p>
             </div>
             <div className="flex gap-4 px-2">
-              <Button className="max-w-fit" size={"lg"}>
+              <Button className="max-w-fit" size={"lg"} onClick={handleClick}>
                 Start <Code2 size={20} className="ml-2" />
               </Button>
               <Button
