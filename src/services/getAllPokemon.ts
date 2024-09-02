@@ -10,5 +10,5 @@ export default async function getAllPokemon() {
   const data = await res.json()
 
   console.log('Todos los pokemon recuperados')
-  return data
+  return data.results
 }
