@@ -2,6 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro'
 import { buttonVariants } from '../components/ui/button'
 import { Image } from 'astro:assets'
+import getAllPokemon from '../services/getAllPokemon'
+
+const pokemon = await getAllPokemon()
+
+console.log(pokemon)
 ---
 
 <BaseLayout
@@ -25,23 +30,21 @@ import { Image } from 'astro:assets'
         You have 5 attempts to guest the Pokemon!
       </p>
     </div>
-    <div class="flex gap-4">
-      <a
-        href="https://ui.shadcn.com"
-        target="_blank"
-        rel="noreferrer"
-        class={buttonVariants()}
-      >
-        Play
-      </a>
-      <a
-        href="https://github.com/Rafacv23/pokewordle"
-        target="_blank"
-        rel="noreferrer"
-        class={buttonVariants({ variant: 'outline' })}
-      >
-        GitHub
-      </a>
+    <div class="flex flex-col gap-4">
+      <a href="/play" class={buttonVariants()}> Play </a>
+      <div>
+        <a
+          href="https://github.com/Rafacv23/pokewordle"
+          target="_blank"
+          rel="noreferrer"
+          class={buttonVariants({ variant: 'outline' })}
+        >
+          GitHub
+        </a>
+        <a href="/rules" class={buttonVariants({ variant: 'outline' })}>
+          Rules
+        </a>
+      </div>
     </div>
   </section>
 </BaseLayout>
