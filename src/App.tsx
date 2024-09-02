@@ -1,7 +1,7 @@
 import HeroSection from "@/components/HeroSection"
 import ThemeTogglebutton from "@/components/ui/theme-togggle"
 import Footer from "@/components/Footer"
-import { usePokemonStore } from "./store/store"
+import { usePokemonStore } from "@/store/store"
 import Play from "@/components/Play"
 
 function App() {
