@@ -10,6 +10,7 @@ export interface State {
   pokemons: Pokemon[]
   selectedPokemon: Pokemon | null
   getAllPokemons: () => Promise<void>
+  reset: () => void
 }
 
 export const usePokemonStore = create<State>()(
@@ -25,6 +26,9 @@ export const usePokemonStore = create<State>()(
 
         console.log("Pokemons received")
         set({ pokemons: data.results })
+      },
+      reset: () => {
+        set({ pokemons: [], selectedPokemon: null })
       },
     }),
     {
