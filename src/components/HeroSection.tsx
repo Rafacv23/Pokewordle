@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { Code2, GithubIcon } from "lucide-react"
+import { githubUrl } from "@/site/config"
 
 export default function HeroSection() {
   return (
@@ -32,7 +33,7 @@ export default function HeroSection() {
                 size={"lg"}
                 variant={"outline"}
               >
-                <a href="https://github.com/Xeven777/vite-shadcn-template">
+                <a href={githubUrl} target="_blank" rel="noreferrer">
                   Github <GithubIcon size={20} className="ml-2" />
                 </a>
               </Button>
