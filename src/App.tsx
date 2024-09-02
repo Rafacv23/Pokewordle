@@ -1,5 +1,6 @@
 import HeroSection from "@/components/HeroSection"
 import ThemeTogglebutton from "@/components/ui/theme-togggle"
+import Footer from "@/components/Footer"
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
         <ThemeTogglebutton />
       </div>
       <HeroSection />
+      <Footer />
     </>
   )
 }
