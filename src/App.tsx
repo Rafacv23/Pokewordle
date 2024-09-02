@@ -1,5 +1,5 @@
-import HeroSection from "./components/HeroSection";
-import ThemeTogglebutton from "./components/ui/theme-togggle";
+import HeroSection from "@/components/HeroSection"
+import ThemeTogglebutton from "@/components/ui/theme-togggle"
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       </div>
       <HeroSection />
     </>
-  );
+  )
 }
 
-export default App;
+export default App
