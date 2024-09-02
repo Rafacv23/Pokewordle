@@ -17,8 +17,7 @@ export default function HeroSection() {
                 PokeWordle
               </h1>
               <p className="text-muted-foreground  mx-auto">
-                Comes with Lucide, ShadCN UI, theme toggle too! Accelerate your
-                development process with this template.
+                You have 5 attempts to guest the Pokemon!
               </p>
             </div>
             <Start />
