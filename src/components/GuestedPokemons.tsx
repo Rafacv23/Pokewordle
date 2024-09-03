@@ -8,6 +8,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { usePokemonStore } from "@/store/store"
+import { formatString } from "@/lib/utils"
 
 export default function GuestedPokemons() {
   const pokemonsByTheUser = usePokemonStore((state) => state.pokemonsByTheUser)
@@ -36,17 +37,19 @@ export default function GuestedPokemons() {
                 alt={pokemon.name}
               />
             </TableCell>
-            <TableCell>{pokemon.name}</TableCell>
-            <TableCell>{pokemon.generation}</TableCell>
+            <TableCell>{formatString(pokemon.name)}</TableCell>
+            <TableCell>
+              {pokemon.generation ? formatString(pokemon.generation) : "None"}
+            </TableCell>
             <TableCell>
               {pokemon.types?.map((type) => (
-                <span id={type}>{type} </span>
+                <span id={type}>{formatString(type)} </span>
               ))}
             </TableCell>
             <TableCell>{pokemon.height}</TableCell>
             <TableCell className="text-right">{pokemon.weight}</TableCell>
             <TableCell className="text-right">
-              {pokemon.evolvesFrom || "None"}
+              {pokemon.evolvesFrom ? formatString(pokemon.evolvesFrom) : "None"}
             </TableCell>
           </TableRow>
         ))}
