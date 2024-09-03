@@ -10,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { ChangeEvent, useState } from "react"
+import { formatString } from "@/lib/utils"
 
 export default function Play() {
   const reset = usePokemonStore((state) => state.reset)
@@ -61,7 +62,7 @@ export default function Play() {
                       key={pokemon.name}
                       onClick={() => handlePokemonSelect(pokemon)}
                     >
-                      {pokemon.name}
+                      {formatString(pokemon.name)}
                     </DropdownMenuItem>
                   ))
                 : "No Pokemon found"}
