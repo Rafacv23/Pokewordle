@@ -1,5 +1,6 @@
 import { usePokemonStore } from "@/store/store"
 import { Button } from "@/components/ui/button"
+import GuestedPokemons from "@/components/GuestedPokemons"
 
 export default function Play() {
   const reset = usePokemonStore((state) => state.reset)
@@ -8,8 +9,8 @@ export default function Play() {
     reset()
   }
   return (
-    <div>
-      Esto es lo que el jugador verá cuando está jugando
+    <div className="w-full py-12 md:py-24 lg:py-32 bg-background">
+      <GuestedPokemons />
       <Button onClick={handleReset}>Reset</Button>
     </div>
   )
