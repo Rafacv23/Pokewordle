@@ -1,7 +1,7 @@
 import { create } from "zustand"
 import { persist } from "zustand/middleware"
 
-interface PokemonType {
+export interface PokemonType {
   type: {
     name: string
   }
