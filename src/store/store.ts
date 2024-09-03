@@ -64,7 +64,7 @@ export const usePokemonStore = create<State>()(
           weight: pokemonData.weight,
           height: pokemonData.height,
           sprites: pokemonData.sprites.front_default,
-          types: pokemonData.types.map((type: PokemonType) => type.type.name),
+          types: pokemonData.types.map((type: PokemonType) => type),
           generation: generation,
           evolvesFrom: evolvesFrom ? evolvesFrom.name : null,
         }
@@ -122,7 +122,7 @@ export const usePokemonStore = create<State>()(
           weight: pokemonData.weight,
           height: pokemonData.height,
           sprites: pokemonData.sprites.front_default,
-          types: pokemonData.types.map((type: PokemonType) => type.type.name),
+          types: pokemonData.types.map((type: PokemonType) => type),
           generation: generation,
           evolvesFrom: evolvesFrom ? evolvesFrom.name : null,
         }
