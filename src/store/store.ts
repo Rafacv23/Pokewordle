@@ -10,6 +10,7 @@ export interface State {
   pokemons: Pokemon[]
   selectedPokemon: Pokemon | null
   getAllPokemons: () => Promise<void>
+  selectPokemon: () => Promise<void>
   reset: () => void
 }
 
@@ -40,7 +41,15 @@ export const usePokemonStore = create<State>()(
         const selectedPokemon =
           pokemons[Math.floor(Math.random() * pokemons.length)]
         // Actualiza el estado con el Pokémon seleccionado
-        set({ selectedPokemon })
+        set({ selectedPokemon: selectedPokemon })
+      },
+      selectPokemon: async () => {
+        const pokemons = get().pokemons
+        if (pokemons.length > 0) {
+          const selectedPokemon =
+            pokemons[Math.floor(Math.random() * pokemons.length)]
+          set({ selectedPokemon: selectedPokemon })
+        }
       },
       reset: () => {
         set({ pokemons: [], selectedPokemon: null })
