@@ -38,7 +38,6 @@ export default function Play() {
 
   const handlePokemonSelect = (pokemon: Pokemon) => {
     addPokemonByTheUser(pokemon)
-    console.log(`${pokemon.name} ha sido añadido`)
   }
 
   return (
