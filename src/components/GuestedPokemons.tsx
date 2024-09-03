@@ -3,13 +3,15 @@ import {
   TableBody,
   TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { usePokemonStore } from "@/store/store"
 
 export default function GuestedPokemons() {
+  const pokemonsByTheUser = usePokemonStore((state) => state.pokemonsByTheUser)
+
   return (
     <Table className="w-full px-2 mx-auto max-w-screen-xl md:px-6">
       <TableCaption>A list of your recent Pokemon.</TableCaption>
@@ -18,25 +20,37 @@ export default function GuestedPokemons() {
           <TableHead className="w-[100px]">Sprite</TableHead>
           <TableHead>Pokemon</TableHead>
           <TableHead>Gen</TableHead>
+          <TableHead>Types</TableHead>
+          <TableHead>Weight</TableHead>
+          <TableHead>Height</TableHead>
           <TableHead className="text-right">Evo</TableHead>
         </TableRow>
       </TableHeader>
-      {/* <TableBody>
-        {invoices.map((invoice) => (
-            <TableRow key={invoice.invoice}>
-            <TableCell className="font-medium">{invoice.invoice}</TableCell>
-            <TableCell>{invoice.paymentStatus}</TableCell>
-            <TableCell>{invoice.paymentMethod}</TableCell>
-            <TableCell className="text-right">{invoice.totalAmount}</TableCell>
-            </TableRow>
-            ))}
-            </TableBody> */}
-      <TableFooter>
-        <TableRow>
-          <TableCell colSpan={3}>Total</TableCell>
-          <TableCell className="text-right">$2,500.00</TableCell>
-        </TableRow>
-      </TableFooter>
+      <TableBody>
+        {pokemonsByTheUser.map((pokemon) => (
+          <TableRow key={pokemon.id}>
+            <TableCell className="font-medium">
+              <img
+                className="w-28 h-28 object-cover rounded-md"
+                src={pokemon.sprites}
+                alt={pokemon.name}
+              />
+            </TableCell>
+            <TableCell>{pokemon.name}</TableCell>
+            <TableCell>{pokemon.generation}</TableCell>
+            <TableCell>
+              {pokemon.types?.map((type) => (
+                <span id={type}>{type} </span>
+              ))}
+            </TableCell>
+            <TableCell>{pokemon.height}</TableCell>
+            <TableCell className="text-right">{pokemon.weight}</TableCell>
+            <TableCell className="text-right">
+              {pokemon.evolvesFrom || "None"}
+            </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
     </Table>
   )
 }
