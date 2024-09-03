@@ -43,7 +43,7 @@ export default function GuestedPokemons() {
             </TableCell>
             <TableCell>
               {pokemon.types?.map((type) => (
-                <span id={type}>{formatString(type)} </span>
+                <span id={type.type.name}>{formatString(type.type.name)} </span>
               ))}
             </TableCell>
             <TableCell>{pokemon.height}</TableCell>
