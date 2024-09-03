@@ -1,4 +1,4 @@
-import { usePokemonStore } from "@/store/store"
+import { Pokemon, usePokemonStore } from "@/store/store"
 import { Button } from "@/components/ui/button"
 import GuestedPokemons from "@/components/GuestedPokemons"
 import { Input } from "@/components/ui/input"
@@ -37,7 +37,7 @@ export default function Play() {
     }
   }
 
-  const handlePokemonSelect = (pokemon) => {
+  const handlePokemonSelect = (pokemon: Pokemon) => {
     addPokemonByTheUser(pokemon)
     console.log(`${pokemon.name} ha sido añadido`)
   }
@@ -58,7 +58,7 @@ export default function Play() {
           <DropdownMenuContent className="w-56">
             <DropdownMenuGroup>
               {filteredPokemons && filteredPokemons.length > 0
-                ? filteredPokemons.map((pokemon) => (
+                ? filteredPokemons.map((pokemon: Pokemon) => (
                     <DropdownMenuItem
                       key={pokemon.name}
                       onClick={() => handlePokemonSelect(pokemon)}
