@@ -8,13 +8,15 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "./ui/dropdown-menu"
-import { useState } from "react"
+} from "@/components/ui/dropdown-menu"
+import { ChangeEvent, useState } from "react"
 
 export default function Play() {
   const reset = usePokemonStore((state) => state.reset)
   const pokemons = usePokemonStore((state) => state.pokemons)
-  const [filteredPokemons, setFilteredPokemons] = useState(null)
+  const [filteredPokemons, setFilteredPokemons] = useState<Pokemon[] | null>(
+    null
+  )
   const addPokemonByTheUser = usePokemonStore(
     (state) => state.addPokemonsByTheUser
   )
@@ -24,16 +26,13 @@ export default function Play() {
     reset()
   }
 
-  const handleSearch = (e) => {
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const searchTerm = e.target.value.toLowerCase()
     if (searchTerm.length >= 3) {
       const results = pokemons.filter((pokemon) =>
         pokemon.name.toLowerCase().includes(searchTerm)
       )
-
       setFilteredPokemons(results)
-
-      //console.log(filteredPokemons)
     }
   }
 
