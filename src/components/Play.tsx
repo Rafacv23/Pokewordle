@@ -16,6 +16,8 @@ export default function Play() {
   const reset = usePokemonStore((state) => state.reset)
   const pokemons = usePokemonStore((state) => state.pokemons)
   const increaseTurn = usePokemonStore((state) => state.increaseTurn)
+  const pokemonsByTheUser = usePokemonStore((state) => state.pokemonsByTheUser)
+  const getAllPokemons = usePokemonStore((state) => state.getAllPokemons)
   const [filteredPokemons, setFilteredPokemons] = useState<Pokemon[] | null>(
     null
   )
@@ -23,8 +25,7 @@ export default function Play() {
     (state) => state.addPokemonsByTheUser
   )
 
-  const handleReset = () => {
-    console.log("Borrando datos de los pokemon")
+  const handleBack = () => {
     reset()
   }
 
@@ -44,10 +45,14 @@ export default function Play() {
     increaseTurn()
   }
 
+  const handleReset = () => {
+    getAllPokemons()
+  }
+
   return (
     <div className="w-full py-12 md:py-24 lg:py-32 bg-background px-2 mx-auto max-w-screen-xl md:px-6">
-      <GuestedPokemons />
-      <form>
+      {pokemonsByTheUser.length > 0 && <GuestedPokemons />}
+      <form className="grid place-content-center grid-flow-col my-8 space-x-4">
         <Input
           type="search"
           placeholder="Search the name of a Pokemon"
@@ -73,7 +78,14 @@ export default function Play() {
           </DropdownMenuContent>
         </DropdownMenu>
       </form>
-      <Button onClick={handleReset}>Reset</Button>
+      <div className="space-x-4">
+        <Button variant="outline" onClick={handleBack}>
+          Go Back
+        </Button>
+        <Button variant="outline" onClick={handleReset}>
+          Reset
+        </Button>
+      </div>
     </div>
   )
 }
