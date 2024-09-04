@@ -22,11 +22,6 @@ export default function HeroSection() {
             </div>
             <Start />
           </div>
-          <img
-            alt="Hero"
-            className="mx-auto shadow-md overflow-hidden rounded-xl object-cover object-bottom sm:w-full lg:order-last"
-            src="https://assets.lummi.ai/assets/QmXkegPybPdekwo72iMg59aBtizgSXtBF1foXBMfqNdr4M?auto=format&w=1500"
-          />
         </div>
       </div>
     </section>
