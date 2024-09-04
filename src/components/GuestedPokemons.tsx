@@ -1,7 +1,7 @@
 import { Table, TableCaption } from "@/components/ui/table"
 import { usePokemonStore } from "@/store/store"
-import THeader from "@/components/THeader"
-import { TBody } from "@/components/TBody"
+import THeader from "@/components/GuestedPkemonsTable/THeader"
+import TBody from "@/components/GuestedPkemonsTable/TBody"
 
 export default function GuestedPokemons() {
   const turn = usePokemonStore((state) => state.turn)
