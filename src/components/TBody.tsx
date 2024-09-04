@@ -39,34 +39,36 @@ export function TBody() {
               {pokemon.types?.map((type) => (
                 <Badge
                   variant={"outline"}
-                  id={type.type.name}
+                  id={type}
                   className={
-                    selectedTypes.includes(type.type.name)
-                      ? "bg-green-500"
-                      : "bg-red-500"
+                    selectedTypes.includes(type) ? "bg-green-500" : "bg-red-500"
                   }
                 >
-                  {formatString(type.type.name)}
+                  {formatString(type)}
                 </Badge>
               ))}
             </TableCell>
             <TableCell>
-              {selectedPokemon.height === pokemon.height ? (
-                selectedPokemon?.height
-              ) : selectedPokemon?.height > pokemon.height ? (
-                <ArrowUp />
-              ) : (
-                <ArrowDown />
-              )}
+              {selectedPokemon ? (
+                selectedPokemon.height === pokemon.height ? (
+                  selectedPokemon?.height
+                ) : selectedPokemon?.height > pokemon.height ? (
+                  <ArrowUp />
+                ) : (
+                  <ArrowDown />
+                )
+              ) : null}
             </TableCell>
             <TableCell className="text-right">
-              {selectedPokemon?.weight === pokemon.weight ? (
-                selectedPokemon?.weight
-              ) : selectedPokemon?.weight > pokemon.weight ? (
-                <ArrowUp />
-              ) : (
-                <ArrowDown />
-              )}
+              {selectedPokemon ? (
+                selectedPokemon.weight === pokemon.weight ? (
+                  selectedPokemon.weight
+                ) : selectedPokemon.weight > pokemon.weight ? (
+                  <ArrowUp />
+                ) : (
+                  <ArrowDown />
+                )
+              ) : null}
             </TableCell>
             <TableCell>
               <Badge
