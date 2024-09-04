@@ -7,13 +7,13 @@
 @tailwind utilities;
 
 :root {
-  --background: 228 55% 95%;
-  --foreground: 228 5% 7%;
+  --background: 124 39% 93%;
+  --foreground: 228 18% 5%;
   --card: 228 50% 90%;
   --card-foreground: 228 5% 10%;
   --popover: 228 55% 95%;
   --popover-foreground: 228 95% 7%;
-  --primary: 228 93% 38%;
+  --primary: 228 18% 5%;
   --primary-foreground: 0 0% 100%;
   --secondary: 228 30% 70%;
   --secondary-foreground: 0 0% 0%;
@@ -23,13 +23,13 @@
   --accent-foreground: 228 5% 10%;
   --destructive: 0 55% 30%;
   --destructive-foreground: 228 5% 90%;
-  --border: 228 30% 50%;
+  --border: 228 18% 5%;
   --input: 228 30% 18%;
   --ring: 228 93% 38%;
   --radius: 0.5rem;
 }
 .dark {
-  --background: 228 50% 7%;
+  --background: 228 18% 5%;
   --foreground: 228 5% 90%;
   --card: 228 50% 7%;
   --card-foreground: 228 5% 90%;
