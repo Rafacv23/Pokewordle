@@ -35,11 +35,12 @@ export function Win() {
           <AlertDialogDescription>
             <img
               src={selectedPokemon?.sprites}
-              alt={selectedPokemon.name + "Sprite"}
+              alt={selectedPokemon?.name + "Sprite"}
               width={120}
               height={120}
             />
-            {formatString(selectedPokemon.name)} was the secret Pokemon.
+            {selectedPokemon ? formatString(selectedPokemon.name) : null} was
+            the secret Pokemon.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
