@@ -25,10 +25,6 @@ export default function Play() {
     (state) => state.addPokemonsByTheUser
   )
 
-  const handleBack = () => {
-    reset()
-  }
-
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const searchTerm = e.target.value.toLowerCase()
     if (searchTerm.length >= 3) {
@@ -41,8 +37,11 @@ export default function Play() {
 
   const handlePokemonSelect = (pokemon: Pokemon) => {
     addPokemonByTheUser(pokemon)
-
     increaseTurn()
+  }
+
+  const handleBack = () => {
+    reset()
   }
 
   const handleReset = () => {
