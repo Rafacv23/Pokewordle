@@ -10,13 +10,13 @@ export interface PokemonType {
 export interface Pokemon {
   name: string
   url: string
-  id?: number
-  weight?: number
-  height?: number
-  sprites?: string
-  types?: PokemonType[]
-  evolvesFrom?: string
-  generation?: string
+  id: number
+  weight: number
+  height: number
+  sprites: string
+  types: string[]
+  evolvesFrom: string
+  generation: string
 }
 
 export interface State {
@@ -63,6 +63,10 @@ export const usePokemonStore = create<State>()(
         const generation = await speciesData.generation.name
         const evolvesFrom = await speciesData.evolves_from_species
 
+        const types = pokemonData.types.map(
+          (type: PokemonType) => type.type.name
+        )
+
         const filteredPokemonData = {
           id: pokemonData.id,
           name: pokemonData.name,
@@ -70,7 +74,7 @@ export const usePokemonStore = create<State>()(
           weight: pokemonData.weight,
           height: pokemonData.height,
           sprites: pokemonData.sprites.front_default,
-          types: pokemonData.types.map((type: PokemonType) => type),
+          types: types,
           generation: generation,
           evolvesFrom: evolvesFrom ? evolvesFrom.name : null,
         }
