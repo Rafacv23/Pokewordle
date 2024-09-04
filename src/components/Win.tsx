@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/alert-dialog"
 import { formatString } from "@/lib/utils"
 import { usePokemonStore } from "@/store/store"
+import Confetti from "react-confetti"
 
 export function Win() {
   const selectedPokemon = usePokemonStore((state) => state.selectedPokemon)
@@ -27,6 +28,7 @@ export function Win() {
 
   return (
     <AlertDialog open>
+      <Confetti />
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Congratulations!</AlertDialogTitle>
