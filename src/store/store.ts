@@ -20,6 +20,8 @@ export interface Pokemon {
 }
 
 export interface State {
+  turn: number
+  increaseTurn: () => void
   pokemons: Pokemon[]
   selectedPokemon: Pokemon | null
   pokemonsByTheUser: Pokemon[]
@@ -32,6 +34,10 @@ export interface State {
 export const usePokemonStore = create<State>()(
   persist(
     (set, get) => ({
+      turn: 0,
+      increaseTurn: () => {
+        set((state) => ({ turn: state.turn + 1 }))
+      },
       pokemons: [],
       selectedPokemon: null,
       pokemonsByTheUser: [],
