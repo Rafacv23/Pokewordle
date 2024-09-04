@@ -46,7 +46,7 @@ export default function THeader() {
       <TableRow>
         {headers.map((header) =>
           header.tooltip ? (
-            <TableHead>
+            <TableHead key={header.name}>
               <TooltipProvider>
                 <div className="flex items-center gap-1">
                   {header.name}
@@ -62,7 +62,7 @@ export default function THeader() {
               </TooltipProvider>
             </TableHead>
           ) : (
-            <TableHead>{header.name}</TableHead>
+            <TableHead key={header.name}>{header.name}</TableHead>
           )
         )}
       </TableRow>

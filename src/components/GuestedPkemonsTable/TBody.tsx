@@ -4,7 +4,7 @@ import { TableBody, TableRow, TableCell } from "@/components/ui/table"
 import { usePokemonStore } from "@/store/store"
 import { Badge } from "@/components/ui/badge"
 
-export function TBody() {
+export default function TBody() {
   const pokemonsByTheUser = usePokemonStore((state) => state.pokemonsByTheUser)
   const selectedPokemon = usePokemonStore((state) => state.selectedPokemon)
 
@@ -39,7 +39,7 @@ export function TBody() {
               {pokemon.types?.map((type) => (
                 <Badge
                   variant={"outline"}
-                  id={type}
+                  key={type}
                   className={
                     selectedTypes.includes(type) ? "bg-green-500" : "bg-red-500"
                   }
