@@ -31,7 +31,7 @@ export default function GuestedPokemons() {
           <TableHead>Types</TableHead>
           <TableHead>Weight</TableHead>
           <TableHead>Height</TableHead>
-          <TableHead className="text-right">Evo</TableHead>
+          <TableHead>Evo</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -67,8 +67,8 @@ export default function GuestedPokemons() {
                     id={type.type.name}
                     className={
                       selectedTypes.includes(type.type.name)
-                        ? "bg-green-500 text-white"
-                        : "bg-red-500 text-white"
+                        ? "bg-green-500"
+                        : "bg-red-500"
                     }
                   >
                     {formatString(type.type.name)}
@@ -93,15 +93,18 @@ export default function GuestedPokemons() {
                   <ArrowDown />
                 )}
               </TableCell>
-              <TableCell
-                className={
-                  selectedPokemon?.evolvesFrom === null &&
-                  pokemon.evolvesFrom === null
-                    ? "bg-red-500 text-right"
-                    : "bg-green-500 text-right"
-                }
-              >
-                {pokemon.evolvesFrom ? "Has" : "None"}
+              <TableCell>
+                <Badge
+                  variant={"outline"}
+                  className={
+                    selectedPokemon?.evolvesFrom === null &&
+                    pokemon.evolvesFrom === null
+                      ? "bg-red-500"
+                      : "bg-green-500"
+                  }
+                >
+                  {pokemon.evolvesFrom ? "Has" : "None"}
+                </Badge>
               </TableCell>
             </TableRow>
           )
