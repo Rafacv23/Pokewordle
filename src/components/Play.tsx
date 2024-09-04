@@ -15,6 +15,7 @@ import { formatString } from "@/lib/utils"
 export default function Play() {
   const reset = usePokemonStore((state) => state.reset)
   const pokemons = usePokemonStore((state) => state.pokemons)
+  const increaseTurn = usePokemonStore((state) => state.increaseTurn)
   const [filteredPokemons, setFilteredPokemons] = useState<Pokemon[] | null>(
     null
   )
@@ -39,10 +40,12 @@ export default function Play() {
 
   const handlePokemonSelect = (pokemon: Pokemon) => {
     addPokemonByTheUser(pokemon)
+
+    increaseTurn()
   }
 
   return (
-    <div className="w-full py-12 md:py-24 lg:py-32 bg-background">
+    <div className="w-full py-12 md:py-24 lg:py-32 bg-background px-2 mx-auto max-w-screen-xl md:px-6">
       <GuestedPokemons />
       <form>
         <Input
