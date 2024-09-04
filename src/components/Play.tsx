@@ -21,6 +21,9 @@ export default function Play() {
   const [filteredPokemons, setFilteredPokemons] = useState<Pokemon[] | null>(
     null
   )
+
+  const [loading, setLoading] = useState<boolean>(false) // to manage the disabled btn and loading state
+
   const addPokemonByTheUser = usePokemonStore(
     (state) => state.addPokemonsByTheUser
   )
@@ -36,8 +39,10 @@ export default function Play() {
   }
 
   const handlePokemonSelect = (pokemon: Pokemon) => {
+    setLoading(true)
     addPokemonByTheUser(pokemon)
     increaseTurn()
+    setLoading(false)
   }
 
   const handleBack = () => {
@@ -59,7 +64,7 @@ export default function Play() {
         />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button>Search</Button>
+            <Button disabled={loading}>Search</Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56">
             <DropdownMenuGroup>
