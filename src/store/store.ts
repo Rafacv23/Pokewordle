@@ -81,6 +81,13 @@ export const usePokemonStore = create<State>()(
         }))
       },
       getAllPokemons: async () => {
+        // comprobar primero si hay turnos o selected pokemons para limpiarlos en el caso de que los haya
+        set({
+          turn: 0,
+          selectedPokemon: null,
+          pokemonsByTheUser: [],
+        })
+
         const response = await fetch(
           "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0"
         )
@@ -151,7 +158,12 @@ export const usePokemonStore = create<State>()(
         }
       },
       reset: () => {
-        set({ pokemons: [], selectedPokemon: null, pokemonsByTheUser: [] })
+        set({
+          pokemons: [],
+          selectedPokemon: null,
+          pokemonsByTheUser: [],
+          turn: 0,
+        })
       },
     }),
     {
