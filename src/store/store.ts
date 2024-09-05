@@ -20,6 +20,8 @@ export interface Pokemon {
 }
 
 export interface State {
+  loading: boolean
+  setLoading: (loading: boolean) => void
   turn: number
   increaseTurn: () => void
   pokemons: Pokemon[]
@@ -34,6 +36,10 @@ export interface State {
 export const usePokemonStore = create<State>()(
   persist(
     (set, get) => ({
+      loading: false,
+      setLoading: (loading: boolean) => {
+        set({ loading })
+      },
       turn: 0,
       increaseTurn: () => {
         set((state) => ({ turn: state.turn + 1 }))
@@ -85,73 +91,83 @@ export const usePokemonStore = create<State>()(
         }))
       },
       getAllPokemons: async () => {
-        // comprobar primero si hay turnos o selected pokemons para limpiarlos en el caso de que los haya
-        set({
-          turn: 0,
-          selectedPokemon: null,
-          pokemonsByTheUser: [],
-        })
+        try {
+          // Activar el estado de loading
+          set({ loading: true })
 
-        const response = await fetch(
-          "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0"
-        )
+          // Resetear los estados antes de hacer la petición
+          set({
+            turn: 0,
+            selectedPokemon: null,
+            pokemonsByTheUser: [],
+          })
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch data")
-        }
+          const response = await fetch(
+            "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0"
+          )
 
-        const data = await response.json()
-        console.log("Pokemons received")
-
-        set({ pokemons: data.results })
-
-        const pokemons = get().pokemons
-
-        if (pokemons.length === 0) {
-          throw new Error("No pokemons available")
-        }
-
-        let selectedPokemonData = null
-        while (!selectedPokemonData) {
-          const selectedPokemon =
-            pokemons[Math.floor(Math.random() * pokemons.length)]
-          const res = await fetch(selectedPokemon.url)
-
-          if (!res.ok) {
+          if (!response.ok) {
             throw new Error("Failed to fetch data")
           }
 
-          const pokemonData = await res.json()
+          const data = await response.json()
+          console.log("Pokemons received")
 
-          if (pokemonData.is_default) {
-            const speciesUrl = pokemonData.species.url
-            const speciesRes = await fetch(speciesUrl)
+          set({ pokemons: data.results })
 
-            if (!speciesRes.ok) {
+          const pokemons = get().pokemons
+
+          if (pokemons.length === 0) {
+            throw new Error("No pokemons available")
+          }
+
+          let selectedPokemonData = null
+          while (!selectedPokemonData) {
+            const selectedPokemon =
+              pokemons[Math.floor(Math.random() * pokemons.length)]
+            const res = await fetch(selectedPokemon.url)
+
+            if (!res.ok) {
               throw new Error("Failed to fetch data")
             }
 
-            const speciesData = await speciesRes.json()
-            const generation = speciesData.generation.name
-            const evolvesFrom = speciesData.evolves_from_species
+            const pokemonData = await res.json()
 
-            selectedPokemonData = {
-              id: pokemonData.id,
-              name: pokemonData.name,
-              url: pokemonData.url,
-              weight: pokemonData.weight,
-              height: pokemonData.height,
-              sprites: pokemonData.sprites.front_default,
-              types: pokemonData.types.map(
-                (type: PokemonType) => type.type.name
-              ),
-              generation: generation,
-              evolvesFrom: evolvesFrom ? evolvesFrom.name : null,
+            if (pokemonData.is_default) {
+              const speciesUrl = pokemonData.species.url
+              const speciesRes = await fetch(speciesUrl)
+
+              if (!speciesRes.ok) {
+                throw new Error("Failed to fetch data")
+              }
+
+              const speciesData = await speciesRes.json()
+              const generation = speciesData.generation.name
+              const evolvesFrom = speciesData.evolves_from_species
+
+              selectedPokemonData = {
+                id: pokemonData.id,
+                name: pokemonData.name,
+                url: pokemonData.url,
+                weight: pokemonData.weight,
+                height: pokemonData.height,
+                sprites: pokemonData.sprites.front_default,
+                types: pokemonData.types.map(
+                  (type: PokemonType) => type.type.name
+                ),
+                generation: generation,
+                evolvesFrom: evolvesFrom ? evolvesFrom.name : null,
+              }
             }
           }
-        }
 
-        set({ selectedPokemon: selectedPokemonData })
+          set({ selectedPokemon: selectedPokemonData })
+        } catch (error) {
+          console.error(error)
+        } finally {
+          // Desactivar el estado de loading
+          set({ loading: false })
+        }
       },
       selectPokemon: async () => {
         const pokemons = get().pokemons
