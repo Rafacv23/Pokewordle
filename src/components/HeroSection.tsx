@@ -1,6 +1,9 @@
 import Start from "@/components/Start"
+import { useTranslation } from "react-i18next"
 
 export default function HeroSection() {
+  const { t } = useTranslation(["home"])
+
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
       <div className="w-full px-2 mx-auto max-w-screen-xl md:px-6">
@@ -16,9 +19,7 @@ export default function HeroSection() {
               <h1 className="text-3xl font-bold tracking-tight text-balance sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-foreground to-muted-foreground/70">
                 PokeWordle
               </h1>
-              <p className="text-muted-foreground  mx-auto">
-                You have 5 attempts to guest the Pokemon!
-              </p>
+              <p className="text-muted-foreground  mx-auto">{t("subtitle")}</p>
             </div>
             <Start />
           </div>
