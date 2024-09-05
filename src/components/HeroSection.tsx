@@ -12,7 +12,7 @@ export default function HeroSection() {
           <div className="flex flex-col justify-center space-y-8">
             <div className="space-y-4">
               <img
-                src="public/logo.png"
+                src="/logo.png"
                 width={120}
                 height={120}
                 alt="Pokewordle logo"
