@@ -1,5 +1,6 @@
 import Start from "@/components/Start"
 import { useTranslation } from "react-i18next"
+import SelectGeneration from "@/components/SelectGeneration"
 
 export default function HeroSection() {
   const { t } = useTranslation(["home"])
@@ -11,7 +12,7 @@ export default function HeroSection() {
           <div className="flex flex-col justify-center space-y-8">
             <div className="space-y-4">
               <img
-                src="/src/assets/logo.png"
+                src="public/logo.png"
                 width={120}
                 height={120}
                 alt="Pokewordle logo"
@@ -22,6 +23,7 @@ export default function HeroSection() {
               <p className="text-muted-foreground  mx-auto">{t("subtitle")}</p>
             </div>
             <Start />
+            <SelectGeneration />
           </div>
         </div>
       </div>
