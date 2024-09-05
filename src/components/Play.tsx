@@ -41,11 +41,16 @@ export default function Play() {
     }
   }
 
-  const handlePokemonSelect = (pokemon: Pokemon) => {
+  const handlePokemonSelect = async (pokemon: Pokemon) => {
     setLoading(true)
-    addPokemonByTheUser(pokemon)
-    increaseTurn()
-    setLoading(false)
+    try {
+      await addPokemonByTheUser(pokemon)
+      increaseTurn()
+    } catch (error) {
+      console.error(error)
+    } finally {
+      setLoading(false)
+    }
   }
 
   const handleBack = () => {
@@ -68,6 +73,7 @@ export default function Play() {
               placeholder={t("input-placeholder")}
               onChange={handleSearch}
               name="search"
+              disabled={loading}
             />
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -96,10 +102,10 @@ export default function Play() {
         </div>
       </form>
       <div className="space-x-4">
-        <Button variant="outline" onClick={handleBack}>
+        <Button variant="outline" onClick={handleBack} disabled={loading}>
           {t("back-btn")}
         </Button>
-        <Button variant="outline" onClick={handleReset}>
+        <Button variant="outline" onClick={handleReset} disabled={loading}>
           {t("reset-btn")}
         </Button>
       </div>
