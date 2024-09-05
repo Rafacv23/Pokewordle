@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/alert-dialog"
 import { formatString } from "@/lib/utils"
 import { usePokemonStore } from "@/store/store"
+import { useTranslation } from "react-i18next"
 
 interface FinishProps {
   success: boolean
@@ -18,6 +19,7 @@ interface FinishProps {
 export default function Finish(success: FinishProps) {
   const selectedPokemon = usePokemonStore((state) => state.selectedPokemon)
   const reset = usePokemonStore((state) => state.reset)
+  const { t } = useTranslation(["finish"])
 
   const handleReset = () => {
     reset()
@@ -34,9 +36,7 @@ export default function Finish(success: FinishProps) {
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>
-            {success.success
-              ? "Congratulations"
-              : "Sorry, better luck next time"}
+            {success.success ? t("win-title") : t("lose-title")}
           </AlertDialogTitle>
           <AlertDialogDescription>
             <img
@@ -45,14 +45,16 @@ export default function Finish(success: FinishProps) {
               width={120}
               height={120}
             />
-            {selectedPokemon ? formatString(selectedPokemon.name) : null} was
-            the secret Pokemon.
+            {selectedPokemon ? formatString(selectedPokemon.name) : null}{" "}
+            {t("subtitle")}
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel onClick={handleReset}>Go Home</AlertDialogCancel>
+          <AlertDialogCancel onClick={handleReset}>
+            {t("back-btn")}
+          </AlertDialogCancel>
           <AlertDialogAction onClick={handleStart}>
-            Play Again
+            {t("again-btn")}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

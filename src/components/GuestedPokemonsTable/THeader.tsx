@@ -6,8 +6,10 @@ import {
 } from "@/components/ui/tooltip"
 import { TableHeader, TableRow, TableHead } from "@/components/ui/table"
 import { Info } from "lucide-react"
+import { useTranslation } from "react-i18next"
 
 export default function THeader() {
+  const { t } = useTranslation(["play"])
   interface Header {
     name: string
     tooltip?: string
@@ -15,29 +17,29 @@ export default function THeader() {
 
   const headers: Header[] = [
     {
-      name: "Sprite",
+      name: t("headers.sprite"),
     },
     {
-      name: "Pokemon",
+      name: t("headers.pokemon"),
     },
     {
-      name: "Generation",
+      name: t("headers.generation"),
     },
     {
-      name: "Types",
-      tooltip: "Types of the Pokémon. If it has two, both will be shown.",
+      name: t("headers.types"),
+      tooltip: t("headers.types-tooltip"),
     },
     {
-      name: "Height",
-      tooltip: "Height comparison with the selected Pokémon.",
+      name: t("headers.height"),
+      tooltip: t("headers.height-tooltip"),
     },
     {
-      name: "Weight",
-      tooltip: "Weight comparison with the selected Pokémon.",
+      name: t("headers.weight"),
+      tooltip: t("headers.weight-tooltip"),
     },
     {
-      name: "Evos",
-      tooltip: "Evolution status of the Pokémon.",
+      name: t("headers.evos"),
+      tooltip: t("headers.evos-tooltip"),
     },
   ]
 

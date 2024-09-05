@@ -3,8 +3,11 @@ import { ArrowUp, ArrowDown } from "lucide-react"
 import { TableBody, TableRow, TableCell } from "@/components/ui/table"
 import { usePokemonStore } from "@/store/store"
 import { Badge } from "@/components/ui/badge"
+import { useTranslation } from "react-i18next"
 
 export default function TBody() {
+  const { t } = useTranslation(["play"])
+
   const pokemonsByTheUser = usePokemonStore((state) => state.pokemonsByTheUser)
   const selectedPokemon = usePokemonStore((state) => state.selectedPokemon)
 
@@ -80,7 +83,7 @@ export default function TBody() {
                     : "bg-green-500"
                 }
               >
-                {pokemon.evolvesFrom ? "Has" : "None"}
+                {pokemon.evolvesFrom ? t("has-evos") : t("hasnt-evos")}
               </Badge>
             </TableCell>
           </TableRow>

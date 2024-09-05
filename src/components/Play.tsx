@@ -11,8 +11,11 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { ChangeEvent, useState } from "react"
 import { formatString } from "@/lib/utils"
+import { useTranslation } from "react-i18next"
+import { Label } from "@/components/ui/label"
 
 export default function Play() {
+  const { t } = useTranslation(["play"])
   const reset = usePokemonStore((state) => state.reset)
   const pokemons = usePokemonStore((state) => state.pokemons)
   const increaseTurn = usePokemonStore((state) => state.increaseTurn)
@@ -57,37 +60,47 @@ export default function Play() {
     <div className="w-full py-12 md:py-24 lg:py-32 bg-background px-2 mx-auto max-w-screen-xl md:px-6">
       {pokemonsByTheUser.length > 0 && <GuestedPokemons />}
       <form className="grid place-content-center grid-flow-col my-8 space-x-4">
-        <Input
-          type="search"
-          placeholder="Search the name of a Pokemon"
-          onChange={handleSearch}
-        />
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button disabled={loading}>Search</Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-56">
-            <DropdownMenuGroup>
-              {filteredPokemons && filteredPokemons.length > 0
-                ? filteredPokemons.map((pokemon: Pokemon) => (
-                    <DropdownMenuItem
-                      key={pokemon.name}
-                      onClick={() => handlePokemonSelect(pokemon)}
-                    >
-                      {formatString(pokemon.name)}
+        <div>
+          <Label htmlFor="search">{t("input-label")}</Label>
+          <div className="flex space-x-2">
+            <Input
+              type="search"
+              placeholder={t("input-placeholder")}
+              onChange={handleSearch}
+              name="search"
+            />
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button disabled={loading}>{t("search-btn")}</Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56">
+                <DropdownMenuGroup>
+                  {filteredPokemons && filteredPokemons.length > 0 ? (
+                    filteredPokemons.map((pokemon: Pokemon) => (
+                      <DropdownMenuItem
+                        key={pokemon.name}
+                        onClick={() => handlePokemonSelect(pokemon)}
+                      >
+                        {formatString(pokemon.name)}
+                      </DropdownMenuItem>
+                    ))
+                  ) : (
+                    <DropdownMenuItem disabled>
+                      {t("not-found")}
                     </DropdownMenuItem>
-                  ))
-                : "No Pokemon found"}
-            </DropdownMenuGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
+                  )}
+                </DropdownMenuGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+        </div>
       </form>
       <div className="space-x-4">
         <Button variant="outline" onClick={handleBack}>
-          Go Back
+          {t("back-btn")}
         </Button>
         <Button variant="outline" onClick={handleReset}>
-          Reset
+          {t("reset-btn")}
         </Button>
       </div>
     </div>
