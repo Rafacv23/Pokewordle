@@ -23,7 +23,7 @@ function App() {
         <Header />
 
         {hasWon ? <Finish success={true} /> : null}
-        {turn > 5 && !hasWon ? <Finish success={false} /> : null}
+        {turn >= 5 && !hasWon ? <Finish success={false} /> : null}
 
         {pokemons.length > 0 && selectedPokemon ? <Play /> : <HeroSection />}
 
