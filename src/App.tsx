@@ -1,9 +1,10 @@
 import HeroSection from "@/components/HeroSection"
-import ThemeTogglebutton from "@/components/ui/theme-togggle"
 import Footer from "@/components/Footer"
 import { usePokemonStore } from "@/store/store"
 import Play from "@/components/Play"
 import Finish from "@/components/Finish"
+import { Header } from "@/components/Header"
+import { Suspense } from "react"
 
 function App() {
   const pokemons = usePokemonStore((state) => state.pokemons)
@@ -18,17 +19,16 @@ function App() {
 
   return (
     <>
-      <div className="fixed top-2 right-6">
-        <ThemeTogglebutton />
-      </div>
-      {hasWon ? (
-        <Finish success={true} />
-      ) : turn > 5 ? (
-        <Finish success={false} />
-      ) : null}
+      <Suspense fallback="Loading...">
+        <Header />
 
-      {pokemons.length > 0 && selectedPokemon ? <Play /> : <HeroSection />}
-      <Footer />
+        {hasWon ? <Finish success={true} /> : null}
+        {turn > 5 && !hasWon ? <Finish success={false} /> : null}
+
+        {pokemons.length > 0 && selectedPokemon ? <Play /> : <HeroSection />}
+
+        <Footer />
+      </Suspense>
     </>
   )
 }
