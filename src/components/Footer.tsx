@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button"
 import { GithubIcon, LinkedinIcon } from "lucide-react"
 import { githubUrl, linkedinUrl } from "@/site/config"
+import { useTranslation } from "react-i18next"
 
 export default function Footer() {
+  const { t } = useTranslation(["footer"])
+
   return (
     <footer className="grid place-content-center">
       <div className="space-x-4 mb-4">
@@ -17,7 +20,7 @@ export default function Footer() {
           </a>
         </Button>
       </div>
-      <h2>Created by Rafa Canosa</h2>
+      <h2>{t("created")}</h2>
     </footer>
   )
 }
