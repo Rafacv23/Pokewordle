@@ -1,4 +1,6 @@
 {
   "subtitle": "Tienes 5 oportunidades para adivinar el pokemon secreto",
-  "play-btn": "Jugar"
+  "play-btn": "Jugar",
+  "dropdown-trigger": "Elegir generaciones",
+  "generations": "Generaciones"
 }

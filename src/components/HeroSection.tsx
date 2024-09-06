@@ -1,5 +1,6 @@
 import Start from "@/components/Start"
 import { useTranslation } from "react-i18next"
+import SelectGeneration from "./SelectGeneration"
 
 export default function HeroSection() {
   const { t } = useTranslation(["home"])
@@ -22,6 +23,7 @@ export default function HeroSection() {
               <p className="text-muted-foreground  mx-auto">{t("subtitle")}</p>
             </div>
             <Start />
+            <SelectGeneration />
           </div>
         </div>
       </div>
