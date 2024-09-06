@@ -8,24 +8,57 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Button } from "./ui/button"
 import { useTranslation } from "react-i18next"
+import { usePokemonStore } from "@/store/store"
+
+interface Generation {
+  value: string
+  label: string
+}
 
 export default function SelectGeneration() {
   const { t } = useTranslation(["home"])
+  const selectedGenerations = usePokemonStore(
+    (state) => state.selectedGenerations
+  )
+  const toggleGeneration = usePokemonStore((state) => state.toggleGeneration)
 
-  // const [showStatusBar, setShowStatusBar] = React.useState<Checked>(true)
-  // const [showActivityBar, setShowActivityBar] = React.useState<Checked>(false)
-  // const [showPanel, setShowPanel] = React.useState<Checked>(false)
-
-  const generations: string[] = [
-    "Generation 1",
-    "Generation 2",
-    "Generation 3",
-    "Generation 4",
-    "Generation 5",
-    "Generation 6",
-    "Generation 7",
-    "Generation 8",
-    "Generation 9",
+  const generations: Generation[] = [
+    {
+      value: "generation-i",
+      label: "Generation I",
+    },
+    {
+      value: "generation-ii",
+      label: "Generation II",
+    },
+    {
+      value: "generation-iii",
+      label: "Generation III",
+    },
+    {
+      value: "generation-iv",
+      label: "Generation IV",
+    },
+    {
+      value: "generation-v",
+      label: "Generation V",
+    },
+    {
+      value: "generation-vi",
+      label: "Generation VI",
+    },
+    {
+      value: "generation-vii",
+      label: "Generation VII",
+    },
+    {
+      value: "generation-viii",
+      label: "Generation VIII",
+    },
+    {
+      value: "generation-ix",
+      label: "Generation IX",
+    },
   ]
 
   return (
@@ -38,10 +71,12 @@ export default function SelectGeneration() {
         <DropdownMenuSeparator />
         {generations.map((generation) => (
           <DropdownMenuCheckboxItem
-            key={generation}
-            checked={generation === "Generation 6"}
+            key={generation.value}
+            textValue={generation.value}
+            checked={selectedGenerations.includes(generation.value)}
+            onCheckedChange={() => toggleGeneration(generation.value)}
           >
-            {generation}
+            {generation.label}
           </DropdownMenuCheckboxItem>
         ))}
       </DropdownMenuContent>
