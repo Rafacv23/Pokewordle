@@ -9,7 +9,7 @@ export default function GuestedPokemons() {
   const turn = usePokemonStore((state) => state.turn)
 
   return (
-    <Table className="w-full px-2 mx-auto max-w-screen-xl md:px-6">
+    <Table className="w-full px-2 mx-auto max-w-screen-xl md:px-6 my-8">
       <TableCaption>{t("remaining", { turn: 5 - turn })}</TableCaption>
       <THeader />
       <TBody />
