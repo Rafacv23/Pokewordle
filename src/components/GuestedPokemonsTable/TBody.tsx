@@ -78,8 +78,7 @@ export default function TBody() {
               <Badge
                 variant={"outline"}
                 className={
-                  selectedPokemon?.evolvesFrom !== null &&
-                  pokemon.evolvesFrom !== null
+                  selectedPokemon?.evolvesFrom === pokemon.evolvesFrom
                     ? "bg-green-500"
                     : "bg-red-500"
                 }
