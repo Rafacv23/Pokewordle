@@ -66,7 +66,7 @@ export default function Play() {
     //reset()
   }
 
-  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && filteredPokemons && filteredPokemons.length > 0) {
       setIsDropdownOpen(true) // Open dropdown on Enter key press
     }
