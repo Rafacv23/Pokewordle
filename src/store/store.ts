@@ -15,6 +15,7 @@ export interface Pokemon {
   height: number
   sprites: string
   types: string[]
+  is_default: boolean
   evolvesFrom: string
   generation: string
 }
@@ -84,6 +85,7 @@ export const usePokemonStore = create<State>()(
           weight: pokemonData.weight,
           height: pokemonData.height,
           sprites: pokemonData.sprites.front_default,
+          is_default: pokemonData.is_default,
           types: pokemonData.types.map((type: PokemonType) => type.type.name),
           generation: generation,
           evolvesFrom: evolvesFrom ? evolvesFrom.name : null,
@@ -138,6 +140,8 @@ export const usePokemonStore = create<State>()(
 
             const pokemonData = await res.json()
 
+            console.log(pokemonData)
+
             const speciesRes = await fetch(pokemonData.species.url)
             if (!speciesRes.ok) {
               throw new Error("Failed to fetch species data")
@@ -155,6 +159,7 @@ export const usePokemonStore = create<State>()(
                 weight: pokemonData.weight,
                 height: pokemonData.height,
                 sprites: pokemonData.sprites.front_default,
+                is_default: pokemonData.is_default,
                 types: pokemonData.types.map(
                   (type: PokemonType) => type.type.name
                 ),

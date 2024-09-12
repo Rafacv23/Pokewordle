@@ -10,6 +10,7 @@ export default function TBody() {
 
   const pokemonsByTheUser = usePokemonStore((state) => state.pokemonsByTheUser)
   const selectedPokemon = usePokemonStore((state) => state.selectedPokemon)
+  console.log(selectedPokemon)
 
   // Obtén los tipos del Pokémon seleccionado
   const selectedTypes = selectedPokemon?.types || []
@@ -84,6 +85,19 @@ export default function TBody() {
                 }
               >
                 {pokemon.evolvesFrom ? t("has-evos") : t("hasnt-evos")}
+              </Badge>
+            </TableCell>
+            <TableCell>
+              <Badge
+                variant={"outline"}
+                className={
+                  selectedPokemon?.is_default === true &&
+                  pokemon.is_default === true
+                    ? "bg-green-500"
+                    : "bg-red-500"
+                }
+              >
+                {pokemon.is_default === false ? t("has-evos") : t("hasnt-evos")}
               </Badge>
             </TableCell>
           </TableRow>

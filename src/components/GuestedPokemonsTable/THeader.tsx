@@ -41,6 +41,10 @@ export default function THeader() {
       name: t("headers.evos"),
       tooltip: t("headers.evos-tooltip"),
     },
+    {
+      name: t("headers.rare"),
+      tooltip: t("headers.rare-tooltip"),
+    },
   ]
 
   return (
