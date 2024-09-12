@@ -59,6 +59,7 @@ export default function Play() {
 
   const handleReset = () => {
     getAllPokemons()
+    reset()
   }
 
   return (
