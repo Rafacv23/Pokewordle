@@ -99,6 +99,7 @@ export const usePokemonStore = create<State>()(
 
       getAllPokemons: async () => {
         try {
+          set({ turn: 0 })
           set({ loading: true })
           set({ pokemonsByTheUser: [] })
 
