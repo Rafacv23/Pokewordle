@@ -100,6 +100,7 @@ export const usePokemonStore = create<State>()(
       getAllPokemons: async () => {
         try {
           set({ loading: true })
+          set({ pokemonsByTheUser: [] })
 
           const selectedGenerations = get().selectedGenerations
           if (selectedGenerations.length === 0) {

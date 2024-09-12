@@ -28,7 +28,7 @@ export default function Finish(success: FinishProps) {
   const getAllPokemons = usePokemonStore((state) => state.getAllPokemons)
 
   const handleStart = () => {
-    reset()
+    //reset()
     getAllPokemons()
   }
 
