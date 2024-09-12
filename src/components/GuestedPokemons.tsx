@@ -10,7 +10,7 @@ export default function GuestedPokemons() {
 
   return (
     <Table className="w-full px-2 mx-auto max-w-screen-xl md:px-6 my-8">
-      <TableCaption>{t("remaining", { turn: 5 - turn })}</TableCaption>
+      <TableCaption>{t("remaining", { turn: 7 - turn })}</TableCaption>
       <THeader />
       <TBody />
     </Table>
