@@ -6,6 +6,7 @@
   "reset-btn": "Reset the game",
   "not-found": "No Pokemon found",
   "remaining": "Remaining attempts {{turn}}",
+  "selected-generations": "Selected generations",
   "headers": {
     "sprite": "Sprite",
     "pokemon": "Pokemon",
