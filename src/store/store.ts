@@ -16,7 +16,7 @@ export interface Pokemon {
   sprites: string
   types: string[]
   is_default: boolean
-  evolvesFrom: string
+  evolvesFrom: boolean
   generation: string
 }
 
@@ -88,7 +88,7 @@ export const usePokemonStore = create<State>()(
           is_default: pokemonData.is_default,
           types: pokemonData.types.map((type: PokemonType) => type.type.name),
           generation: generation,
-          evolvesFrom: evolvesFrom ? evolvesFrom.name : null,
+          evolvesFrom: evolvesFrom ? true : false,
         }
 
         set((state) => ({
@@ -166,9 +166,7 @@ export const usePokemonStore = create<State>()(
                   (type: PokemonType) => type.type.name
                 ),
                 generation: generation,
-                evolvesFrom: speciesData.evolves_from_species
-                  ? speciesData.evolves_from_species.name
-                  : null,
+                evolvesFrom: speciesData.evolves_from_species ? true : false,
               }
             }
 
