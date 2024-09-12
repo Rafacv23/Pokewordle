@@ -16,7 +16,7 @@
     "height-tooltip": "Height comparison with the selected Pokemon.",
     "weight": "Weight",
     "weight-tooltip": "Weight comparison with the selected Pokemon.",
-    "evos": "Evos",
+    "evos": "Pre-Evo",
     "evos-tooltip": "Displays if the Pokemon has a pre evolution.",
     "rare": "Special",
     "rare-tooltip": "Displays if a Pokemon has a special form."
