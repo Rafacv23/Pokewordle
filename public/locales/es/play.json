@@ -17,7 +17,7 @@
     "weight": "Peso",
     "weight-tooltip": "Comparación de peso con el Pokémon seleccionado.",
     "evos": "Evoluciones",
-    "evos-tooltip": "Estado de evolución del Pokémon.",
+    "evos-tooltip": "Indica si el Pokémon tiene pre-evolución.",
     "rare": "Especial",
     "rare-tooltip": "Indica si es una forma regional o especial."
   },

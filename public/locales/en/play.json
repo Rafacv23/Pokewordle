@@ -11,15 +11,15 @@
     "pokemon": "Pokemon",
     "generation": "Generation",
     "types": "Types",
-    "types-tooltip": "Types of the Pokémon. If it has two, both will be shown.",
+    "types-tooltip": "Types of the Pokemon. If it has two, both will be shown.",
     "height": "Height",
-    "height-tooltip": "Height comparison with the selected Pokémon.",
+    "height-tooltip": "Height comparison with the selected Pokemon.",
     "weight": "Weight",
-    "weight-tooltip": "Weight comparison with the selected Pokémon.",
+    "weight-tooltip": "Weight comparison with the selected Pokemon.",
     "evos": "Evos",
-    "evos-tooltip": "Evolution status of the Pokémon.",
+    "evos-tooltip": "Displays if the Pokemon has a pre evolution.",
     "rare": "Special",
-    "rare-tooltip": "Displays if a Pokémon has a special form."
+    "rare-tooltip": "Displays if a Pokemon has a special form."
   },
   "has-evos": "Has",
   "hasnt-evos": "None"
