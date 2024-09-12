@@ -10,7 +10,6 @@ export default function TBody() {
 
   const pokemonsByTheUser = usePokemonStore((state) => state.pokemonsByTheUser)
   const selectedPokemon = usePokemonStore((state) => state.selectedPokemon)
-  console.log(selectedPokemon)
 
   // Obtén los tipos del Pokémon seleccionado
   const selectedTypes = selectedPokemon?.types || []
