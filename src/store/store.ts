@@ -142,8 +142,6 @@ export const usePokemonStore = create<State>()(
 
             const pokemonData = await res.json()
 
-            console.log(pokemonData)
-
             const speciesRes = await fetch(pokemonData.species.url)
             if (!speciesRes.ok) {
               throw new Error("Failed to fetch species data")
