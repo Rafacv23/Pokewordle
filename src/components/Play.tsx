@@ -26,16 +26,19 @@ export default function Play() {
   )
 
   const [loading, setLoading] = useState<boolean>(false) // to manage the disabled btn and loading state
+  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false) // New state to manage dropdown
+  const [searchTerm, setSearchTerm] = useState<string>("") // New state to manage search term
 
   const addPokemonByTheUser = usePokemonStore(
     (state) => state.addPokemonsByTheUser
   )
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    const searchTerm = e.target.value.toLowerCase()
-    if (searchTerm.length >= 3) {
+    const term = e.target.value.toLowerCase()
+    setSearchTerm(term)
+    if (term.length >= 3) {
       const results = pokemons.filter((pokemon) =>
-        pokemon.name.toLowerCase().includes(searchTerm)
+        pokemon.name.toLowerCase().includes(term)
       )
       setFilteredPokemons(results)
     }
@@ -49,6 +52,7 @@ export default function Play() {
     } catch (error) {
       console.error(error)
     } finally {
+      setSearchTerm("") // Clear input after selection
       setLoading(false)
     }
   }
@@ -62,6 +66,12 @@ export default function Play() {
     //reset()
   }
 
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && filteredPokemons && filteredPokemons.length > 0) {
+      setIsDropdownOpen(true) // Open dropdown on Enter key press
+    }
+  }
+
   return (
     <div className="w-full py-12 md:py-24 lg:py-32 bg-background px-2 mx-auto max-w-screen-xl md:px-6">
       {pokemonsByTheUser.length > 0 && <GuestedPokemons />}
@@ -73,10 +83,16 @@ export default function Play() {
               type="search"
               placeholder={t("input-placeholder")}
               onChange={handleSearch}
+              onKeyDown={handleKeyDown} // Handle key press
               name="search"
               disabled={loading}
+              value={searchTerm}
+              autoComplete="off"
             />
-            <DropdownMenu>
+            <DropdownMenu
+              open={isDropdownOpen}
+              onOpenChange={setIsDropdownOpen}
+            >
               <DropdownMenuTrigger asChild>
                 <Button disabled={loading}>{t("search-btn")}</Button>
               </DropdownMenuTrigger>
