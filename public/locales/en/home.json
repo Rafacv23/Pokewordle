@@ -2,5 +2,7 @@
   "subtitle": "An engaging game where you have 7 attempts to guess the secret Pokémon.",
   "play-btn": "Play",
   "dropdown-trigger": "Pick generations",
-  "generations": "Generations"
+  "description": "Pick the generations that you want to play. By default we will pick all of them.",
+  "generations": "Generations",
+  "save-btn": "Save"
 }

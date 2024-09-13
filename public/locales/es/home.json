@@ -2,5 +2,7 @@
   "subtitle": "Un emocionante juego donde tienes 7 oportunidades para adivinar el Pókemon secreto.",
   "play-btn": "Jugar",
   "dropdown-trigger": "Elegir generaciones",
-  "generations": "Generaciones"
+  "description": "Selecciona las generaciones con las que quieres jugar. Por defecto se usarán todas.",
+  "generations": "Generaciones",
+  "save-btn": "Guardar"
 }
