@@ -76,7 +76,7 @@ export default function SelectGeneration() {
             <DrawerTitle>{t("generations")}</DrawerTitle>
             <DrawerDescription>{t("description")}</DrawerDescription>
           </DrawerHeader>
-          <ToggleGroup type="multiple">
+          <ToggleGroup className='flex flex-col md:flex md:flex-row' type="multiple">
             {generations.map((gen) => (
               <Toggle
                 key={gen.value}
