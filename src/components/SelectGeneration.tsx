@@ -1,14 +1,18 @@
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuCheckboxItem,
-} from "@/components/ui/dropdown-menu"
-import { Button } from "./ui/button"
+import { Button } from "@/components/ui/button"
 import { useTranslation } from "react-i18next"
 import { usePokemonStore } from "@/store/store"
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer"
+import { ToggleGroup } from "./ui/toggle-group"
+import { Toggle } from "./ui/toggle"
 
 interface Generation {
   value: string
@@ -62,24 +66,36 @@ export default function SelectGeneration() {
   ]
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+    <Drawer>
+      <DrawerTrigger asChild>
         <Button variant="outline">{t("dropdown-trigger")}</Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56">
-        <DropdownMenuLabel>{t("generations")}</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        {generations.map((generation) => (
-          <DropdownMenuCheckboxItem
-            key={generation.value}
-            textValue={generation.value}
-            checked={selectedGenerations.includes(generation.value)}
-            onCheckedChange={() => toggleGeneration(generation.value)}
-          >
-            {generation.label}
-          </DropdownMenuCheckboxItem>
-        ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
+      </DrawerTrigger>
+      <DrawerContent>
+        <div className="mx-auto w-full max-w-sm">
+          <DrawerHeader>
+            <DrawerTitle>{t("generations")}</DrawerTitle>
+            <DrawerDescription>{t("description")}</DrawerDescription>
+          </DrawerHeader>
+          <ToggleGroup type="multiple">
+            {generations.map((gen) => (
+              <Toggle
+                key={gen.value}
+                value={gen.value}
+                onChange={() => toggleGeneration(gen.value)}
+                onClick={() => toggleGeneration(gen.value)}
+                pressed={selectedGenerations.includes(gen.value)}
+              >
+                {gen.label}
+              </Toggle>
+            ))}
+          </ToggleGroup>
+          <DrawerFooter>
+            <DrawerClose asChild>
+              <Button>{t("save-btn")}</Button>
+            </DrawerClose>
+          </DrawerFooter>
+        </div>
+      </DrawerContent>
+    </Drawer>
   )
 }
