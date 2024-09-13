@@ -1,6 +1,6 @@
 import Start from "@/components/Start"
 import { useTranslation } from "react-i18next"
-import SelectGeneration from "./SelectGeneration"
+import SelectGeneration from "@/components/SelectGeneration"
 
 export default function HeroSection() {
   const { t } = useTranslation(["home"])
