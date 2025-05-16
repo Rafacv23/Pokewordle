@@ -1,0 +1,6 @@
+{
+  "title": "Acerca de PokeWordle",
+  "intro": "PokeWordle es un juego de adivinanzas inspirado en Wordle y hecho para fans de Pokémon. ¡Tienes 7 intentos para adivinar el Pokémon secreto!",
+  "description": "Este proyecto es de código abierto y está hecho con React, Zustand, Tailwind CSS y la PokeAPI.",
+  "github": "Ver en GitHub"
+}

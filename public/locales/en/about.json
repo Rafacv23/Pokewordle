@@ -1,0 +1,6 @@
+{
+  "title": "About PokeWordle",
+  "intro": "PokeWordle is a fun guessing game inspired by Wordle and built for Pokémon fans. You have 7 attempts to guess the secret Pokémon correctly!",
+  "description": "This project is open source and built using React, Zustand, Tailwind CSS, and the PokeAPI.",
+  "github": "View it on GitHub"
+}

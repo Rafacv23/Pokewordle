@@ -1,0 +1,10 @@
+{
+  "title": "How to Play",
+  "steps": [
+    "You have 7 chances to guess the secret Pokémon.",
+    "After each guess, you'll get hints to help you narrow it down.",
+    "You can choose Pokémon from specific generations using the filter.",
+    "The game supports English and Spanish — switch in the header.",
+    "Try to guess before you run out of turns. Good luck!"
+  ]
+}
