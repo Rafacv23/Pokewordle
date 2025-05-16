@@ -6,6 +6,14 @@ import Finish from "@/components/Finish"
 import { Header } from "@/components/Header"
 import { Suspense } from "react"
 import Loader from "@/components/Loader"
+import { createRoute } from "@tanstack/react-router"
+import { rootRoute } from "./__root"
+
+export const indexRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/",
+  component: () => <App />,
+})
 
 function App() {
   const pokemons = usePokemonStore((state) => state.pokemons)
